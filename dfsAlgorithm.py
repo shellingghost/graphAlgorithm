@@ -2,7 +2,6 @@ from queue import *
 # from numpy import *
 from copy import deepcopy
 
-
 def solve_puzzle_helper(Board, nextCheck, Destination, globMin, visited, origPath, result, pathVar, Source,dictAttempt):
     if len(visited) == 1:
         if Source == Destination:
@@ -30,7 +29,6 @@ def solve_puzzle_helper(Board, nextCheck, Destination, globMin, visited, origPat
 
             if test == False:
                 dictAttempt[9000] = []
-
                 return
 
     # direction array holds information,leading with the value/len(path) for comparison and min(). all directions.
@@ -118,11 +116,6 @@ def solve_puzzle(Board, Source, Destination):
     print(Source)
     print(Destination)
 
-    #print(len(Board))
-    #print(len(Board[0]))
-
-
-
     # for initial comparisons at base cases
     intermediate = 0
     # for each individual recursion path
@@ -131,7 +124,7 @@ def solve_puzzle(Board, Source, Destination):
     globVisit = []
     # ridiculously large number for comparison
     globMin = 9999999999
-    # origPath ???
+
     origPath = []
     # queue for exploration, each recursion gets their own *!!!!!!!!!! import!!!!!!!!!!
     nextCheck = []
@@ -153,17 +146,17 @@ def solve_puzzle(Board, Source, Destination):
     # list comprehensive to get the minimum key
     result = min([x for x in dictAttempt.keys()])
     result = dictAttempt[result]
-   # print(dictAttempt.keys())
+    
     if result == []:
         result = None
     return result
-
 
 def pathFinder(cell, Board, visited):
     # returns an unvisited direction
     # a loop to go over all possible directions
     directions = []
-    # I need some sort of math to get the directions right, and then to add it to possibilities
+    
+    # math to get the directions right, and then to add it to possibilities
     up = (cell[0] - 1, cell[1])
     down = (cell[0] + 1, cell[1])
     left = (cell[0], cell[1] - 1)
@@ -172,8 +165,7 @@ def pathFinder(cell, Board, visited):
     directions.append(left)
     directions.append(up)
     directions.append(down)
-
-
+    
     for direction in directions:
         # for loop to check what directions are available,and return direction
         if (direction[0]) >= 0:
@@ -187,7 +179,6 @@ def pathFinder(cell, Board, visited):
                             if direction not in visited:
                                 return direction
     return False
-
 
 Puzzle = [['-', '-', '-'],
           ['-', '-', '-'],
